@@ -17,7 +17,7 @@ In the module, create custom fields based on your criteria requirements. This sh
 * Yes/ No Questions - Picklist Field with the following values
   * Yes
   * No
-  * N/A 
+  * N/A *- field is not applicable (the script will bypass this qualification criteria).*
 * Multi-Select Questions (the script will check if the value(s) selected by applicants of the Creator form is/ are present on this CRM field. If yes - pass, if no - fail).
   * Value A
   * Value B
@@ -25,11 +25,11 @@ In the module, create custom fields based on your criteria requirements. This sh
   * etc..
 * "Applicable to Me" Questions. This allows for more unique/ customisable criteria. It should be a section with a parent field (where criteria is set) and child fields (to input values). The values set in the child fields will also be programmed later to dynamically populate the Creator form.
   * Parent Field: "Applicable to Me Requirements" (criteria is set here)
-    * All *- if applicants are required to select all values*
-    * Any 1 *- if applicants are required to select any 1 of the values*
-    * Any 2 *- if applicants are required to select any 2 of the values*
-    * Any 3 *- if applicants are required to select any 3 of the values*
-    * None *- if applicants are required to select none of the values*
+    * All *- if applicants are required to select all values for acceptance*
+    * Any 1 *- if applicants are required to select any 1 of the values for acceptance*
+    * Any 2 *- if applicants are required to select any 2 of the values for acceptance*
+    * Any 3 *- if applicants are required to select any 3 of the values for acceptance*
+    * None *- if applicants are required to select none of the values for acceptance*
     * N/A *- field is not applicable (the script will bypass this qualification criteria).*
   * Child Fields (the parent field will reference the values in the child fields below, these values will also be used to populate the Creator Form):
     * Applicable to Me 1
@@ -37,7 +37,7 @@ In the module, create custom fields based on your criteria requirements. This sh
     * Applicable to Me 3
     * Applicable to Me 4 
     * Applicable to Me 5
-    * + Add more if you need..
+    * Add more if you need..
 * "Partner" field
   * A lookup field to Accounts for the Creator script to identify unique organization-specific qualification criteria.
     
