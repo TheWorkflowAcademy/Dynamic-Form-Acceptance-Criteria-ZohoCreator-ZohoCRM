@@ -43,7 +43,7 @@ In the module, create custom fields based on your criteria requirements. This sh
     
 ### Create Records in the "Qualification Criteria" module
 * Create a record for each Course Type with its unique qualifying criteria - Course Type A (General), Course Type B (General), etc. This would take care of all general submissions. 
-* What about special cases? Let's say you have a special deal with an organisation called "Umbrella Corp" for Course Type A. For applicants with Participation Codes from Umbrella Corp, there is a different set of qualifying criteria. We can do this by creating another record for Course Type A with different criteria called "Course Type A (Umbrella Corp)". Do make sure to select the organization in the "Partner" field.
+* To account for organization-specific criteria, a separate record can be created. For example, you have a special deal with an organisation called "Umbrella Corp" for Course Type A. For applicants with Participation Codes from Umbrella Corp, there is a different set of qualifying criteria. We can do this by creating another record for Course Type A with different criteria called "Course Type A (Umbrella Corp)". Do make sure to select the organization in the "Partner" lookup field.
 
 ## Tutorial - Creator 
 ### Create a Workflow - "on user input of a field"
