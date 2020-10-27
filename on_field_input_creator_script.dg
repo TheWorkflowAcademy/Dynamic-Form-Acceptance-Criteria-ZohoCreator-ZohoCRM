@@ -1,0 +1,45 @@
+qualificationrecord = zoho.crm.searchRecords("Qualification_Criteria","Course_Type:equals:" + input.Course_Type);
+if(qualificationrecord.size() > 0)
+{
+	q = qualificationrecord.get(0);
+	taglist = "";
+	applist = List();
+	if(q.get("Applicable_to_Me_1") != null)
+	{
+		applist.add(q.get("Applicable_to_Me_1").getPrefix("TAG:").trim());
+		taglist = taglist + "\"" + q.get("Applicable_to_Me_1").getPrefix("TAG:").trim() + "\"" + ":" + "\"" + q.get("Applicable_to_Me_1").getSuffix("TAG:").trim() + "\"" + ",";
+	}
+	if(q.get("Applicable_to_Me_2") != null)
+	{
+		applist.add(q.get("Applicable_to_Me_2").getPrefix("TAG").trim());
+		taglist = taglist + "\"" + q.get("Applicable_to_Me_2").getPrefix("TAG:").trim() + "\"" + ":" + "\"" + q.get("Applicable_to_Me_2").getSuffix("TAG:").trim() + "\"" + ",";
+	}
+	if(q.get("Applicable_to_Me_3") != null)
+	{
+		applist.add(q.get("Applicable_to_Me_3").getPrefix("TAG").trim());
+		taglist = taglist + "\"" + q.get("Applicable_to_Me_3").getPrefix("TAG:").trim() + "\"" + ":" + "\"" + q.get("Applicable_to_Me_3").getSuffix("TAG:").trim() + "\"" + ",";
+	}
+	if(q.get("Applicable_to_Me_4") != null)
+	{
+		applist.add(q.get("Applicable_to_Me_4").getPrefix("TAG").trim());
+		taglist = taglist + "\"" + q.get("Applicable_to_Me_4").getPrefix("TAG:").trim() + "\"" + ":" + "\"" + q.get("Applicable_to_Me_4").getSuffix("TAG:").trim() + "\"" + ",";
+	}
+	if(q.get("Applicable_to_Me_5") != null)
+	{
+		applist.add(q.get("Applicable_to_Me_5").getPrefix("TAG").trim());
+		taglist = taglist + "\"" + q.get("Applicable_to_Me_5").getPrefix("TAG:").trim() + "\"" + ":" + "\"" + q.get("Applicable_to_Me_5").getSuffix("TAG:").trim() + "\"" + ",";
+	}
+	if(applist.size() > 0)
+	{
+		show Applicable_To_Me;
+	}
+	for each  a in applist
+	{
+		input.Applicable_To_Me:ui.add(a);
+	}
+	input.TagInfo = "{" + taglist.removeLastOccurence(",") + "}";
+}
+else
+{
+	hide Applicable_To_Me;
+}
