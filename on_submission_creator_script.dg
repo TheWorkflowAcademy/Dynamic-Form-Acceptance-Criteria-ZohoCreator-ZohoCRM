@@ -1,0 +1,112 @@
+qualificationrecords = zoho.crm.searchRecords("Qualification_Criteria","Course_Type:equals:" + input.Course_Type);
+usepartnercriteria = false;
+for each  r in qualificationrecords
+{
+	if(r.get("Partner") != null)
+	{
+		if(Organization_Name = ifNull(r.get("Partner").get("name"),"Nope"))
+		{
+			usepartnercriteria = true;
+			partnercriteria = r;
+		}
+	}
+	else
+	{
+		criteria = r;
+	}
+}
+if(usepartnercriteria = true)
+{
+	criteria = partnercriteria;
+}
+
+
+//Counters
+q = criteria;
+applist = List();
+result = "Accepted";
+reason = "";
+reason_admin = "";
+
+//Standard Yes/ No fields
+if(q.get("Are_you_above_18") != "N/A")
+{
+	if(Are_you_above_18 != q.get("Are_you_above_18"))
+	{
+		result = "Rejected";
+		reason = reason + "• You need to be above 18 years old to join this course." + "\n";
+		reason_admin = reason_admin + "• Is not above 18 years old." + "\n";
+	}
+}
+
+//Multi-Select field with Specific Options to Select
+mainreason = q.get("Reason_for_taking_this_course");
+if(mainreason != "N/A")
+{
+	if(mainreason.size() > 0 && !mainreason.contains(input.Reason_for_taking_this_course))
+	{
+		result = "Rejected";
+		reason = reason + "• Your reason for taking this course is not what we are looking for." + "\n";
+		reason_admin = reason_admin + "• Selected the wrong reason for taking the course." + "\n";
+	}
+}
+
+//Applicable to Me section with all Present Options (Unique Qualification Multi Select)
+if(q.get("Applicable_To_Me_Requirements") != "N/A")
+{
+	if(q.get("Applicable_To_Me_Requirements") = "All")
+	{
+		iterator = {1,2,3,4,5};	// Change to the number of “child” fields you have in the “Applicable to Me” section in CRM
+		n = 0;
+		for each  i in iterator
+		{
+			fieldname = "Applicable_To_Me_" + i;
+			if(q.get(fieldname) != null)
+			{
+				n = n + 1;
+			}
+		}
+		if(Applicable_To_Me.size() != n)
+		{
+			result = "Rejected";
+			reason = reason + "• You needed to select all of the 'Applicable to Me' options." + "\n";
+			reason_admin = reason_admin + "• Did not select all of the 'Applicable to Me' options." + "\n";
+		}
+	}
+	else if(q.get("Applicable_To_Me_Requirements") = "None")
+	{
+		if(Applicable_To_Me.size() != 0)
+		{
+			result = "Rejected";
+			reason = reason + "• You needed to select NONE of the 'Applicable to Me' options." + "\n";
+			reason_admin = reason_admin + "• Selected one of more of the 'Applicable to Me' options." + "\n";
+		}
+	}
+	else if(q.get("Applicable_To_Me_Requirements").contains("Any"))
+	{
+		if(Applicable_To_Me.size() < q.get("Applicable_To_Me_Requirements").right(1).toLong())
+		{
+			result = "Rejected";
+			reason = reason + "• You need to have chosen at least " + q.get("Applicable_To_Me_Requirements").right(1).toLong() + " of the 'Applicable to Me' options." + "\n";
+			reason_admin = reason_admin + "• Did not select at least " + q.get("Applicable_To_Me_Requirements").right(1).toLong() + " of the 'Applicable to Me' options." + "\n";
+		}
+	}
+}
+
+//Acceptance/ Rejection Actions
+if(result = "Rejected")
+{
+
+  //Construct the fail message
+	failmessage = "Dear " + input.First_Name + " " + input.Last_Name + "," + "\n\n" + "Sorry, you were not accepted for the " + input.Course_Type + " Course. See below for the reason(s):" + "\n" + reason + "\n" + "Thank you for your application.";
+	failmessage_admin = "This Contact was just Rejected from an application for " + input.Course_Type + ". Here are the reasons:" + "\n" + reason_admin;
+  
+  //Insert your rejection actions here
+  
+}
+else
+{
+
+  //Insert your acceptance actions here
+  
+}
