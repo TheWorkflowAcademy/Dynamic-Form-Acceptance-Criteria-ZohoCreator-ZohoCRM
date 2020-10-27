@@ -23,15 +23,17 @@ In the module, create custom fields based on your criteria requirements. This sh
   * Value B
   * Value C
   * etc..
-* "Applicable to Me" Questions. This allows for more unique/ customisable criteria. It should be a section with a parent field (where criteria is set) and child fields (to input values). The values set in the child fields will also be programmed later to dynamically populate the Creator form.
-  * Parent Field: "Applicable to Me Requirements" (criteria is set here)
-    * All *- if applicants are required to select all values for acceptance*
-    * Any 1 *- if applicants are required to select any 1 of the values for acceptance*
-    * Any 2 *- if applicants are required to select any 2 of the values for acceptance*
-    * Any 3 *- if applicants are required to select any 3 of the values for acceptance*
-    * None *- if applicants are required to select none of the values for acceptance*
-    * N/A *- field is not applicable (the script will bypass this qualification criteria).*
-  * Child Fields (the parent field will reference the values in the child fields below, these values will also be used to populate the Creator Form):
+* "Applicable to Me" Questions. 
+  * This allows for more unique/ customisable criteria. It should be a section with a parent field (where criteria is set) and child fields (to input values).
+  * The values set in the child fields will also be programmed later to dynamically populate the Creator form.
+  * **Parent** Field: "Applicable to Me Requirements" (criteria is set here). Applicants are required to select All/ Any 1/ Any 2/ Any 3/ None of the child field values to be accepted. If it is "N/A", the script will bypass this qualification criteria.
+    * All
+    * Any 1
+    * Any 2
+    * Any 3
+    * None
+    * N/A
+  * **Child** Fields: the parent field will reference the values in the child fields below, these values will also be used to populate the Creator Form.
     * Applicable to Me 1
     * Applicable to Me 2
     * Applicable to Me 3
