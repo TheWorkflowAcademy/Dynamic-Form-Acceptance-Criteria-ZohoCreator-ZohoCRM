@@ -1,5 +1,5 @@
 # Dynamic-Form-Acceptance-Criteria-ZohoCreator-ZohoCRM
-This setup enables a Zoho Creator form submission's acceptance/ rejection criteria to be dynamically configured in Zoho CRM instead of having them hard-coded.
+This setup enables a Zoho Creator form submission's acceptance/ rejection criteria to be dynamically configured in Zoho CRM instead of having them hard-coded in the Creator script.
 
 ## Core Idea
 Some Creator forms have complex acceptance/ rejection criteria that may be subjected to changes from time-to-time. Having all that hard-coded into the script can be both tedious and unscalable. This workaround establishes a dynamic link between Creator and CRM allowing users to simply set the criteria they desire on a record in a CRM custom module with 0 coding knowledge needed.
