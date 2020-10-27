@@ -55,7 +55,7 @@ The following script needs to be written on user input of a field of the Creator
 ### Creator script to dynamically populate Creator form
 The script below searches the Qualification Criteria record on CRM based on the Course Type input on the form, and then dynamically populates the "Applicable to Me" section as field values on the Creator Form. If there are no values at all, the entire field on the Form will be hidden.
 * Important Note: To assist searching in CRM, we have also set up a "tag" system where tags will be added to the Contact record based on what the applicant had selected (all applicants regardless of acceptance will have a Contact created in CRM).
-  * For this to work correctly, it is important to follow the **exact format** of adding "tag" into the "Applicable to Me" child fields as shown in the example below:
+  * For this to work correctly, please follow the **exact format** of adding "tag" into the "Applicable to Me" child fields as shown in the example below:
     * I will be actively looking for a remote job within the next 1-2 months. TAG: remotejob
 
 ```javascript
